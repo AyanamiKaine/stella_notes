@@ -17,9 +17,11 @@ import 'package:flutter/material.dart'
         Colors,
         Checkbox,
         FilledButton; // Explicitly import Flutter's Colors
-import 'package:intl/intl.dart'; // Import the intl package
+// Import the intl package
 
 class FAQ extends StatefulWidget {
+  const FAQ({super.key});
+
   @override
   _FAQState createState() => _FAQState();
 }
@@ -55,7 +57,7 @@ class _FAQState extends State<FAQ> {
     {
       'question': 'Where can I find my save file?',
       'answer':
-          'For windows this would be "~/AppData/Roaming/Stella Knowledge Manager/main_save_data.json"',
+          'Windows: "~/AppData/Roaming/Stella Knowledge Manager/main_save_data.json" \n\nLinux: "~/.config/Stella Knowledge Manager/main_save_data.json"',
     },
     // Add more FAQ items here
   ];
