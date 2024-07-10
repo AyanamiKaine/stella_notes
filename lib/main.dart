@@ -45,6 +45,7 @@ import 'package:intl/intl.dart'; // Import the intl package
 import 'dart:developer'; // Import for the log function
 import 'package:dartzmq/dartzmq.dart';
 import 'file_to_learn.dart';
+//import 'stella_quizes.dart';
 
 void main() {
   // Defining the window title if, we are one windows, linux, or mac-os
@@ -165,10 +166,12 @@ class _MyHomePageState extends State<MyHomePage> {
     _spacedRepetitionDatabaseSocket.sendString(jsonString);
     _spacedRepetitionDatabaseSocket.recv();
 
-    filesToLearn.removeWhere((file) => file.id == fileToLearn.id);
-    _filesToReview = filesToLearn
-        .where((file) => file.nextReviewDate.isBefore(DateTime.now()))
-        .toList(); // Convert to list
+    setState(() {
+      filesToLearn.removeWhere((file) => file.id == fileToLearn.id);
+      _filesToReview = filesToLearn
+          .where((file) => file.nextReviewDate.isBefore(DateTime.now()))
+          .toList(); // Convert to list
+    });
 
     _setFileWithHighestPriority();
   }
@@ -435,7 +438,7 @@ class _MyHomePageState extends State<MyHomePage> {
         items: [
           PaneItem(
               icon: const Icon(FluentIcons.home_solid),
-              body: Guide(),
+              body: const Guide(),
               title: const Text("Guide")),
           PaneItem(
             icon: const Icon(FluentIcons.document),
@@ -703,10 +706,21 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         )))),
           ),
+          /*
+          PaneItem(
+            icon: const Icon(FluentIcons.guid),
+            title: const Text('Quizzes'),
+            body: QuizCard( // QuizCard widget inside PaneItem
+              question: 'What is the capital of France?',
+              answers: ['Berlin', 'Paris', 'Rome', "Moskau"],
+              correctAnswerIndex: 1, // Index of 'Paris'
+            ),
+          ),
+          */
           PaneItem(
               icon: const Icon(FluentIcons.people),
               title: const Text("Frequently Asked Questions"),
-              body: FAQ())
+              body: const FAQ())
         ],
         footerItems: [
           PaneItemSeparator(),
