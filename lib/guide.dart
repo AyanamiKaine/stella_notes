@@ -1,7 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:stella_notes/faq.dart';
 
 class Guide extends StatelessWidget {
+  const Guide({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ScaffoldPage(
